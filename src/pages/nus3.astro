@@ -1,16 +1,16 @@
 ---
-import Card from "../components/Card.astro";
 import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 ---
 
 <Layout>
   <div class="wrapper">
-    <!-- <div class="section target" transition:name="target">nus1 Content</div> -->
     <Card title="nus1" body="nus1body" href="/" />
     <Card title="nus2" body="nus2body" href="/nus2" />
     <Card title="nus3" body="nus3body" href="/nus3" />
     <Card title="nus4" body="nus4body" href="/nus4" />
     <Card title="nus5" body="nus5body" href="/nus5" />
+    <div class="section target" transition:name="target">nus3 Content</div>
   </div>
 </Layout>
 
@@ -19,17 +19,16 @@ import Layout from "../layouts/Layout.astro";
     display: flex;
     gap: 20px;
   }
-
   .section {
     box-sizing: border-box;
     padding: 1rem;
     border-radius: 0.25rem;
     width: 200px;
     height: 200px;
-    background-color: var(--primary-color-opacity-low);
+    background-color: var(--secondary-color-opacity);
   }
 
   .target {
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--secondary-color);
   }
 </style>

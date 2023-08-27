@@ -1,39 +1,65 @@
---- 
-interface Props {
-	title: string;
-}
-
-const { title } = Astro.props;
+---
+import { ViewTransitions } from "astro:transitions";
+import { fade } from "astro:transitions";
+import Card from "../components/Card.astro";
 ---
 
-<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Labs</title>
+    <ViewTransitions />
+  </head>
+  <body class="body">
+    <header class="header">
+      <h1 class="title">View Transition in Astro</h1>
+      <ul class="menu">
+        <li class="menu-item"><a href="./">nus1</a></li>
+        <li class="menu-item"><a href="./nus2">nus2</a></li>
+        <li class="menu-item"><a href="./nus3">nus3</a></li>
+        <li class="menu-item"><a href="./nus4">nus4</a></li>
+        <li class="menu-item"><a href="./nus5">nus5</a></li>
+      </ul>
+    </header>
+    <h2></h2>
+    <main class="main" transition:animate="slide">
+      <slot />
+    </main>
+    <!-- <main class="main" transition:animate={fade({ duration: "0.4s" })}>
+      <slot />
+    </main> -->
+
+    <style scoped>
+      .body {
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+        padding: 0 1rem;
+        background-color: var(--bg-light-color);
+      }
+      .main {
+        padding: 2rem;
+      }
+      .title {
+        margin: 0;
+        font-size: 1.6rem;
+      }
+      .menu {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .menu-item {
+        margin: 0;
+      }
+    </style>
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151A;
-		background-size: 224px;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>
